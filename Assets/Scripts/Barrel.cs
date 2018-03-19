@@ -15,9 +15,9 @@ public class Barrel : MonoBehaviour
 		gameObject.transform.Rotate (0, -5, 0);
 	}
 
-	void OnTriggerEnter (Collider colliding)
+	void OnCollisionEnter (Collision colliding)
 	{
-		if (colliding.tag == "Enemy") 
+		if (colliding.gameObject.tag == "Enemy") 
 		{
 			//death conditions
 			print ("YOU IS DEAD BOI");

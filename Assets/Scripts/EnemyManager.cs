@@ -58,11 +58,23 @@ public class EnemyManager : MonoBehaviour
 			GotoNextPoint();
 	}
 
+
+
 	//* my addition
+	void OnTriggerEnter (Collider colli)
+	{
+		if (colli.tag == "Player") 
+		{
+			attack = true;
+			agent.speed = agent.speed + 10;
+		}
+	}
+
 	void OnTriggerStay (Collider col)
 	{
 		if (col.tag == "Player") 
 		{
+			
 			attack = true;
 			agent.destination = playerPos.transform.position;
 		}
@@ -73,6 +85,7 @@ public class EnemyManager : MonoBehaviour
 		if (coll.tag == "Player") 
 		{
 			attack = false;
+			agent.speed = agent.speed + -10;
 		}
 	}
 
