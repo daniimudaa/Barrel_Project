@@ -27,7 +27,7 @@ public class PlayerManager : MonoBehaviour
 
 		if (ult) 
 		{
-			//show ult range visuals
+			//show ult range visuals & trigger zone
 			UltRange.SetActive(true);
 
 			//activate ult UI
@@ -41,10 +41,10 @@ public class PlayerManager : MonoBehaviour
 
 		if (!ult) 
 		{
-			//show ult range visuals
+			//hide ult range visuals & trigger zone
 			UltRange.SetActive(false);
 
-			//activate ult UI
+			//de-activate ult UI
 			UltUI.SetActive(false);
 		}
 
@@ -74,7 +74,10 @@ public class PlayerManager : MonoBehaviour
 		//player dodge move
 		if (Input.GetKeyDown (KeyCode.LeftShift)) 
 		{
-			//dodge defence
+			//get first person script
+			//activate shift movement for 3 seconds
+			//turn off
+			//6 second cooldown
 		}
 	}
 
@@ -97,6 +100,7 @@ public class PlayerManager : MonoBehaviour
 	{
 		//activate ult sound
 		//activate animation
+		//move player forward by range distance
 		//print ("ULT WORKS");
 	}
 
