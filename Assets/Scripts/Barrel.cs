@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class Barrel : MonoBehaviour 
 {
+	public bool playaIsDead;
 
-	void Start () 
+	void Start ()
 	{
-		
+		playaIsDead = false;
 	}
 	
 	void Update () 
@@ -19,6 +20,7 @@ public class Barrel : MonoBehaviour
 	{
 		if (colliding.gameObject.tag == "Enemy") 
 		{
+			playaIsDead = true;
 			//death conditions
 			print ("YOU IS DEAD BOI");
 		}

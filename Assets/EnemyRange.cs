@@ -1,0 +1,42 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class EnemyRange : MonoBehaviour 
+{
+	public GameObject enemy;
+	private EnemyManager enemyScript;
+
+	void Start () 
+	{
+		enemyScript = enemy.GetComponent<EnemyManager> ();
+	}
+
+	void OnTriggerEnter (Collider colli)
+	{
+		if (colli.tag == "Player") 
+		{
+			enemyScript.attack = true;
+			//enemyScript.agent.speed = enemyScript.agent.speed + 1;
+		}
+	}
+
+	void OnTriggerStay (Collider col)
+	{
+		if (col.tag == "Player") 
+		{
+
+			enemyScript.attack = true;
+			enemyScript.agent.destination = enemyScript.playerPos.transform.position;
+		}
+	}
+
+	void OnTriggerExit (Collider coll)
+	{
+		if (coll.tag == "Player") 
+		{
+			enemyScript.attack = false;
+			//enemyScript.agent.speed = enemyScript.agent.speed + -1;
+		}
+	}
+}

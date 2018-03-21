@@ -4,14 +4,10 @@ using UnityEngine;
 
 public class DeathTrig : MonoBehaviour 
 {
-	
+	//ult attack death for enemies in the path
 
 	void OnTriggerEnter (Collider other)
 	{
-		if (other.gameObject.tag == "Enemy") 
-		{
-			gameObject.GetComponent<Animator> ().SetTrigger ("DeathTrig");
-			Destroy (gameObject, 2);
-		}
+		other.GetComponent<EnemyManager> ().Die();
 	}
 }

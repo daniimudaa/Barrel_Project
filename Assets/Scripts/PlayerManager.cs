@@ -11,6 +11,8 @@ public class PlayerManager : MonoBehaviour
 //	public GameObject sprintUI;
 //	public GameObject sprintUIParticles;
 
+	public GameObject ultAttakTrig;
+
 	public FirstPersonController fpcScript;
 
 	public bool ult;
@@ -37,7 +39,7 @@ public class PlayerManager : MonoBehaviour
 
 	void Update () 
 	{
-		print (ult); //testing ult true/false variables
+		//print (ult); //testing ult true/false variables
 		//print (sprint); //testing sprint true/false variables
 
 		if (ult) 
@@ -80,7 +82,7 @@ public class PlayerManager : MonoBehaviour
 			if (!ult) 
 			{
 				//play no ult sound
-				print ("ULT NOT READY");
+				//print ("ULT NOT READY");
 			}
 
 			ULTisCool();
@@ -124,7 +126,7 @@ public class PlayerManager : MonoBehaviour
 			if (!sprint) 
 			{
 				//play no ult sound
-				print ("Sprint NOT READY");
+				//print ("Sprint NOT READY");
 			}
 
 			sprintisCool();
@@ -151,7 +153,7 @@ public class PlayerManager : MonoBehaviour
 	{
 		//activate UI range
 		//activate ULT sound
-		print ("ULT is activated");
+		//print ("ULT is activated");
 	}
 
 	void UltAttack()
@@ -160,9 +162,8 @@ public class PlayerManager : MonoBehaviour
 		{
 			//activate animation
 			anim.SetTrigger("UltAttack");
-
-			//move player forward by range distance
-			print ("ULT ATTACKING");
+			ultAttakTrig.SetActive(true);
+			//print ("ULT ATTACKING");
 		}
 	}
 
@@ -192,10 +193,6 @@ public class PlayerManager : MonoBehaviour
 	void sprintActivate()
 	{
 		fpcScript.m_RunSpeed = (15);
-
-		//activate ult sound
-		//activate animation
-		//move player forward by range distance
 	}
 
 

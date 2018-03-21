@@ -7,15 +7,17 @@ public class EnemyManager : MonoBehaviour
 {
 
 	public Transform[] points;
-	private int destPoint = 0;
-	private NavMeshAgent agent;
+	public int destPoint = 0;
+	public NavMeshAgent agent;
 
 	public bool attack; //* my addition 
 	public GameObject playerPos;
+	public Animator animator;
 
 	void Start () 
 	{
 		attack = false; //* my addition 
+		animator = GetComponent<Animator>();
 
 		agent = GetComponent<NavMeshAgent>();
 
@@ -59,37 +61,16 @@ public class EnemyManager : MonoBehaviour
 	}
 
 
-
 	//* my addition
-	void OnTriggerEnter (Collider colli)
+	public void Die ()
 	{
-		if (colli.tag == "Player") 
-		{
-			attack = true;
-			agent.speed = agent.speed + 10;
-		}
-	}
-
-	void OnTriggerStay (Collider col)
-	{
-		if (col.tag == "Player") 
-		{
-			
-			attack = true;
-			agent.destination = playerPos.transform.position;
-		}
-	}
-
-	void OnTriggerExit (Collider coll)
-	{
-		if (coll.tag == "Player") 
-		{
-			attack = false;
-			agent.speed = agent.speed + -10;
-		}
+		print ("YOU KILLED HIM!");
+		agent.speed = 0;
+		animator.SetTrigger ("DeathTrig"); 
+		Destroy (this, 1);
 	}
 
 }
 
-//* NOT MINE - script found and used from the Unity documentation
+//* NOT ENTIRELY MINE - script found and used from the Unity documentation then edited
 //* https://docs.unity3d.com/Manual/nav-AgentPatrol.html 
