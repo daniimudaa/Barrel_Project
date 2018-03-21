@@ -21,7 +21,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             [HideInInspector] public float CurrentTargetSpeed = 8f;
 
 #if !MOBILE_INPUT
-            private bool m_Running;
+           // private bool m_Running;
 #endif
 
             public void UpdateDesiredTargetSpeed(Vector2 input)
@@ -46,21 +46,21 @@ namespace UnityStandardAssets.Characters.FirstPerson
 #if !MOBILE_INPUT
 	            if (Input.GetKey(RunKey))
 	            {
-		            CurrentTargetSpeed *= RunMultiplier;
-		            m_Running = true;
+//		            CurrentTargetSpeed *= RunMultiplier;
+//		            m_Running = true;
 	            }
 	            else
 	            {
-		            m_Running = false;
+//		            m_Running = false;
 	            }
 #endif
             }
 
 #if !MOBILE_INPUT
-            public bool Running
-            {
-                get { return m_Running; }
-            }
+//            public bool Running
+//			{
+//                get { return m_Running; }
+//            }
 #endif
         }
 
@@ -105,17 +105,17 @@ namespace UnityStandardAssets.Characters.FirstPerson
             get { return m_Jumping; }
         }
 
-        public bool Running
-        {
-            get
-            {
- #if !MOBILE_INPUT
-				return movementSettings.Running;
-#else
-	            return false;
-#endif
-            }
-        }
+//        public bool Running
+//        {
+//            get
+//            {
+// #if !MOBILE_INPUT
+//				return movementSettings.Running;
+//#else
+//	            return false;
+//#endif
+//            }
+//        }
 
 
         private void Start()
