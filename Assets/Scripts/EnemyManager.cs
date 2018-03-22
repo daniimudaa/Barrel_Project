@@ -14,9 +14,14 @@ public class EnemyManager : MonoBehaviour
 	public GameObject playerPos;
 	public Animator animator;
 
+	public bool dead;
+
+	public GameManager_ gameScript;
+
 	void Start () 
 	{
 		attack = false; //* my addition 
+		dead = false;
 		animator = GetComponent<Animator>();
 
 		agent = GetComponent<NavMeshAgent>();
@@ -65,9 +70,12 @@ public class EnemyManager : MonoBehaviour
 	public void Die ()
 	{
 		print ("YOU KILLED HIM!");
-		agent.speed = 0;
-		animator.SetTrigger ("DeathTrig"); 
-		Destroy (this, 1);
+		dead = true;
+		this.agent.speed = 0;
+		this.animator.SetTrigger ("DeathTrig"); 
+		gameScript.enemyList.Remove (this.gameObject);
+		Destroy (this.gameObject, 1);
+
 	}
 
 }

@@ -5,10 +5,10 @@ using UnityStandardAssets.Characters.FirstPerson;
 
 public class PlayerManager : MonoBehaviour 
 {
-//	public GameObject UltUI;
+	public GameObject UltUI;
 //	public GameObject UltUIParticles;
-//	public GameObject UltRange;
-//	public GameObject sprintUI;
+	public GameObject UltRange;
+	public GameObject sprintUI;
 //	public GameObject sprintUIParticles;
 
 	public GameObject ultAttakTrig;
@@ -44,11 +44,9 @@ public class PlayerManager : MonoBehaviour
 
 		if (ult) 
 		{
-			//show ult range visuals & trigger zone
-			//UltRange.SetActive(true);
+			UltRange.SetActive(true);
 
-			//activate ult UI
-			//UltUI.SetActive(true);
+			UltUI.SetActive(true);
 
 			//ult is active sound
 
@@ -59,13 +57,13 @@ public class PlayerManager : MonoBehaviour
 		if (!ult) 
 		{
 			//hide ult range visuals & trigger zone
-			//UltRange.SetActive(false);
+			UltRange.SetActive(false);
 
 			//de-activate ult UI
-			//UltUI.SetActive(false);
+			UltUI.SetActive(false);
 		}
 
-		//player ult attack
+		//this is player ult attack
 		if (Input.GetKeyDown (KeyCode.Q)) 
 		{
 			ultCooldown = false;
@@ -94,8 +92,7 @@ public class PlayerManager : MonoBehaviour
 
 		if (sprint) 
 		{
-			//activate ult UI
-			//sprintUI.SetActive(true);
+			sprintUI.SetActive(true);
 
 			//sprint is active sound
 
@@ -105,11 +102,10 @@ public class PlayerManager : MonoBehaviour
 
 		if (!sprint) 
 		{
-			//de-activate ult UI
-			//sprintUI.SetActive(false);
+			sprintUI.SetActive(false);
 		}
 
-		//player ult attack
+		//this is player speed up
 		if (Input.GetKeyDown (KeyCode.LeftShift)) 
 		{
 			sprintCooldown = false;
@@ -144,6 +140,7 @@ public class PlayerManager : MonoBehaviour
 	{
 		if (ultCooldown) 
 		{
+			ultAttakTrig.SetActive(false);
 			Invoke("ULTisTrue", 20);
 			//print ("COOLDOWN");
 		}
@@ -151,7 +148,6 @@ public class PlayerManager : MonoBehaviour
 
 	void UltActivate()
 	{
-		//activate UI range
 		//activate ULT sound
 		//print ("ULT is activated");
 	}
@@ -160,7 +156,6 @@ public class PlayerManager : MonoBehaviour
 	{
 		if (enemy) 
 		{
-			//activate animation
 			anim.SetTrigger("UltAttack");
 			ultAttakTrig.SetActive(true);
 			//print ("ULT ATTACKING");
@@ -202,7 +197,7 @@ public class PlayerManager : MonoBehaviour
 		if (collider.tag == "Enemy") 
 		{
 			enemy = true;
-			//get ULT range and change colour to green
+			UltRange.GetComponent<MeshRenderer> ().material.color = Color.green;
 		}
 	}
 
@@ -211,7 +206,7 @@ public class PlayerManager : MonoBehaviour
 		if (collider2.tag == "Enemy") 
 		{
 			enemy = false;
-			//get ULT range and change colour to red
+			UltRange.GetComponent<MeshRenderer> ().material.color = Color.red;	
 		}
 	}
 }

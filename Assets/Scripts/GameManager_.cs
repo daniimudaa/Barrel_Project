@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityStandardAssets.Characters.FirstPerson;
+
 
 public class GameManager_ : MonoBehaviour 
 {
@@ -9,30 +11,41 @@ public class GameManager_ : MonoBehaviour
 	public List<GameObject> enemyList;
 
 	////* UI win, loose & pause panels live here
-	//public GameObject deathPanel;
-	//public GameObject winPanel;
-	//public GameObject pausePanel;
+	public GameObject deathPanel;
+	public GameObject winPanel;
+	public GameObject pausePanel;
 
 	public bool paused = false;
 
 	private Barrel barScript;
 	public  GameObject barrel;
-	public GameObject[] enemies;
+	//public GameObject[] enemies;
+
+	public MouseLook mouseScript;
+	public bool mouseActivate;
+
 
 	void Start () 
 	{
+		mouseActivate = false;
+
 		barScript = barrel.GetComponent<Barrel> ();
 		enemyList = new List <GameObject> ();
-		enemies = GameObject.FindGameObjectsWithTag ("Enemy");
-
-		enemyList.AddRange (enemies);
+//		enemies = GameObject.FindObjectsOfType<EnemyManager>(). ("Enemy");
+//
+		enemyList.AddRange (enemyList);
 	}
 	
 	void Update () 
 	{
 		if (barScript.playaIsDead) 
 		{
-			Time.timeScale = 0;
+			//Time.timeScale = 0;
+			//turn mouse lock off, mouse visibility on
+			mouseActivate = true;
+			mouseScript.m_cursorIsLocked = false;
+			mouseScript.SetCursorLock (true);
+
 			print ("You dead boi");
 			//deathPanel.SetActive (true);
 		}
@@ -42,7 +55,7 @@ public class GameManager_ : MonoBehaviour
 			//*game un-paused
 			if (paused) 
 			{
-				//pausePanel.SetActive (false);
+				pausePanel.SetActive (false);
 				Time.timeScale = 1;
 				print ("UNPAUSED");
 				paused = false;
@@ -51,17 +64,17 @@ public class GameManager_ : MonoBehaviour
 			//*game paused
 			else 
 			{
-				//pausePanel.SetActive (true);
+				pausePanel.SetActive (true);
 				Time.timeScale = 0;
 				print ("PAUSED!");
 				paused = true;
 			}
 		}
 			
-		if (enemyList.Count == 0)
+		if (enemyList.Count < 0)
 		{
-			//Time.timeScale = 0;
-			//winPanel.SetActive (true);
+			Time.timeScale = 0;
+			winPanel.SetActive (true);
 		}
 
 	}

@@ -8,6 +8,6 @@ public class DeathTrig : MonoBehaviour
 
 	void OnTriggerEnter (Collider other)
 	{
-		other.GetComponent<EnemyManager> ().Die();
+		other.transform.root.gameObject.GetComponent<EnemyManager> ().Die();
 	}
 }

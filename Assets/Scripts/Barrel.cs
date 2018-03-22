@@ -21,8 +21,6 @@ public class Barrel : MonoBehaviour
 		if (colliding.gameObject.tag == "Enemy") 
 		{
 			playaIsDead = true;
-			//death conditions
-			print ("YOU IS DEAD BOI");
 		}
 	}
 }

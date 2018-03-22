@@ -14,10 +14,10 @@ public class EnemyRange : MonoBehaviour
 
 	void OnTriggerEnter (Collider colli)
 	{
-		if (colli.tag == "Player") 
+		if (colli.tag == "Player" && !enemyScript.dead) 
 		{
 			enemyScript.attack = true;
-			//enemyScript.agent.speed = enemyScript.agent.speed + 1;
+			enemyScript.agent.speed = enemyScript.agent.speed + 5;
 		}
 	}
 
@@ -33,10 +33,10 @@ public class EnemyRange : MonoBehaviour
 
 	void OnTriggerExit (Collider coll)
 	{
-		if (coll.tag == "Player") 
+		if (coll.tag == "Player" && !enemyScript.dead) 
 		{
 			enemyScript.attack = false;
-			//enemyScript.agent.speed = enemyScript.agent.speed + -1;
+			enemyScript.agent.speed = enemyScript.agent.speed + -5;
 		}
 	}
 }
