@@ -31,12 +31,15 @@ public class GameManager_ : MonoBehaviour
 	{
 		gameState = GameState.INGAME;
 
+		Time.timeScale = 1;
+
 		mouseActivate = false;
 
 		barScript = barrel.GetComponent<Barrel> ();
 		enemyList = new List <GameObject> ();
+
 //		enemies = GameObject.FindObjectsOfType<EnemyManager>(). ("Enemy");
-//
+
 		enemyList.AddRange (enemyList);
 	}
 	
@@ -58,7 +61,8 @@ public class GameManager_ : MonoBehaviour
 
 		if (barScript.playaIsDead) 
 		{
-			//Time.timeScale = 0;
+			Time.timeScale = 0;
+
 			//turn mouse lock off, mouse visibility on
 			gameState = GameState.MENU;
 

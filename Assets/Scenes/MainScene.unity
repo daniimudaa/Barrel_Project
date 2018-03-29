@@ -529,7 +529,7 @@ Prefab:
         type: 2}
       propertyPath: points.Array.data[0]
       value: 
-      objectReference: {fileID: 2033779700}
+      objectReference: {fileID: 1660631751}
     - target: {fileID: 114616478492920514, guid: a3b317b9ced24e64792a5cf7511bdd47,
         type: 2}
       propertyPath: points.Array.data[1]
@@ -569,7 +569,7 @@ Prefab:
         type: 2}
       propertyPath: points.Array.data[8]
       value: 
-      objectReference: {fileID: 1660631751}
+      objectReference: {fileID: 2033779700}
     - target: {fileID: 114616478492920514, guid: a3b317b9ced24e64792a5cf7511bdd47,
         type: 2}
       propertyPath: points.Array.data[9]
@@ -2482,7 +2482,7 @@ Prefab:
         type: 2}
       propertyPath: points.Array.data[0]
       value: 
-      objectReference: {fileID: 2033779700}
+      objectReference: {fileID: 1751516326}
     - target: {fileID: 114616478492920514, guid: a3b317b9ced24e64792a5cf7511bdd47,
         type: 2}
       propertyPath: points.Array.data[1]
@@ -2502,7 +2502,7 @@ Prefab:
         type: 2}
       propertyPath: points.Array.data[4]
       value: 
-      objectReference: {fileID: 1751516326}
+      objectReference: {fileID: 2033779700}
     - target: {fileID: 114616478492920514, guid: a3b317b9ced24e64792a5cf7511bdd47,
         type: 2}
       propertyPath: points.Array.data[5]
@@ -2650,7 +2650,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 6.7
+  m_Radius: 4.85
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &576246241
 GameObject:
@@ -5949,10 +5949,9 @@ MonoBehaviour:
     MaximumX: 90
     smooth: 0
     smoothTime: 5
-    lockCursor: 1
-    m_cursorIsLocked: 1
     gameScript: {fileID: 1216717599}
   mouseActivate: 0
+  gameState: 0
 --- !u!4 &1216717600
 Transform:
   m_ObjectHideFlags: 0
@@ -6481,7 +6480,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 6.7
+  m_Radius: 4.85
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1296789079
 GameObject:
@@ -6901,7 +6900,7 @@ Prefab:
         type: 2}
       propertyPath: points.Array.data[0]
       value: 
-      objectReference: {fileID: 2033779700}
+      objectReference: {fileID: 52534646}
     - target: {fileID: 114616478492920514, guid: a3b317b9ced24e64792a5cf7511bdd47,
         type: 2}
       propertyPath: points.Array.data[1]
@@ -6966,7 +6965,7 @@ Prefab:
         type: 2}
       propertyPath: points.Array.data[13]
       value: 
-      objectReference: {fileID: 1627477414}
+      objectReference: {fileID: 2033779700}
     - target: {fileID: 114616478492920514, guid: a3b317b9ced24e64792a5cf7511bdd47,
         type: 2}
       propertyPath: playerPos
@@ -7065,7 +7064,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 6.7
+  m_Radius: 4.85
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1425037085
 GameObject:
@@ -7326,7 +7325,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 6.7
+  m_Radius: 4.85
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1498396942
 GameObject:
@@ -8971,8 +8970,6 @@ MonoBehaviour:
     MaximumX: 90
     smooth: 0
     smoothTime: 5
-    lockCursor: 1
-    m_cursorIsLocked: 1
     gameScript: {fileID: 0}
   m_UseFovKick: 0
   m_FovKick:
