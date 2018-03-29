@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityStandardAssets.Characters.FirstPerson;
 
+public enum GameState {MENU, INGAME};
 
 public class GameManager_ : MonoBehaviour 
 {
@@ -24,9 +25,12 @@ public class GameManager_ : MonoBehaviour
 	public MouseLook mouseScript;
 	public bool mouseActivate;
 
+	public GameState gameState;
 
 	void Start () 
 	{
+		gameState = GameState.INGAME;
+
 		mouseActivate = false;
 
 		barScript = barrel.GetComponent<Barrel> ();
@@ -38,16 +42,28 @@ public class GameManager_ : MonoBehaviour
 	
 	void Update () 
 	{
+		Debug.Log (gameState);
+
+		if (gameState == GameState.INGAME) 
+		{
+			Cursor.lockState = CursorLockMode.Locked;
+			Cursor.visible = false;
+		}
+
+		if (gameState == GameState.MENU)
+		{
+			Cursor.lockState = CursorLockMode.None;
+			Cursor.visible = true;
+		}
+
 		if (barScript.playaIsDead) 
 		{
 			//Time.timeScale = 0;
 			//turn mouse lock off, mouse visibility on
-			mouseActivate = true;
-			mouseScript.m_cursorIsLocked = false;
-			mouseScript.SetCursorLock (true);
+			gameState = GameState.MENU;
 
 			print ("You dead boi");
-			//deathPanel.SetActive (true);
+			deathPanel.SetActive (true);
 		}
 
 		if (Input.GetKeyDown (KeyCode.Escape)) 
@@ -59,6 +75,7 @@ public class GameManager_ : MonoBehaviour
 				Time.timeScale = 1;
 				print ("UNPAUSED");
 				paused = false;
+				gameState = GameState.INGAME;
 			}
 
 			//*game paused
@@ -68,11 +85,13 @@ public class GameManager_ : MonoBehaviour
 				Time.timeScale = 0;
 				print ("PAUSED!");
 				paused = true;
+				gameState = GameState.MENU;
 			}
 		}
 			
 		if (enemyList.Count < 0)
 		{
+			gameState = GameState.MENU;
 			Time.timeScale = 0;
 			winPanel.SetActive (true);
 		}

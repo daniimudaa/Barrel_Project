@@ -140,7 +140,7 @@ public class PlayerManager : MonoBehaviour
 	{
 		if (ultCooldown) 
 		{
-			ultAttakTrig.SetActive(false);
+			Invoke ("attackTrig", 0.2f);
 			Invoke("ULTisTrue", 20);
 			//print ("COOLDOWN");
 		}
@@ -162,6 +162,11 @@ public class PlayerManager : MonoBehaviour
 		}
 	}
 
+
+	void attackTrig()
+	{
+		ultAttakTrig.SetActive(false);
+	}
 
 
 
