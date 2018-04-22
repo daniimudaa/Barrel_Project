@@ -9,7 +9,7 @@ public class GameManager_ : MonoBehaviour
 {
 	//store enemy lists
 	//if 0 then win the game
-	public List<GameObject> enemyList;
+	public List<GameObject> enemyList = new List<GameObject>();
 
 	////* UI win, loose & pause panels live here
 	public GameObject deathPanel;
@@ -27,6 +27,10 @@ public class GameManager_ : MonoBehaviour
 
 	public GameState gameState;
 
+	public AudioClip dead;
+	public AudioClip win;
+	public AudioSource audioSource;
+
 	void Start () 
 	{
 		gameState = GameState.INGAME;
@@ -36,40 +40,46 @@ public class GameManager_ : MonoBehaviour
 		mouseActivate = false;
 
 		barScript = barrel.GetComponent<Barrel> ();
-		enemyList = new List <GameObject> ();
 
-//		enemies = GameObject.FindObjectsOfType<EnemyManager>(). ("Enemy");
 
-		enemyList.AddRange (enemyList);
+		foreach (GameObject enemy in enemyList) 
+		{
+			enemyList.Add (enemy);
+		}
 	}
 	
 	void Update () 
 	{
-		Debug.Log (gameState);
-
+		//if in game then lock cursor & hide
 		if (gameState == GameState.INGAME) 
 		{
 			Cursor.lockState = CursorLockMode.Locked;
 			Cursor.visible = false;
 		}
 
+		//if in menu screen unlock cursor & show
 		if (gameState == GameState.MENU)
 		{
 			Cursor.lockState = CursorLockMode.None;
 			Cursor.visible = true;
 		}
 
+		//if the player dies then call death variables
 		if (barScript.playaIsDead) 
 		{
+			//pause time based movement
 			Time.timeScale = 0;
 
 			//turn mouse lock off, mouse visibility on
 			gameState = GameState.MENU;
 
+			//set active death panel & play death sound
 			print ("You dead boi");
 			deathPanel.SetActive (true);
+			audioSource.PlayOneShot (dead);
 		}
 
+		//if press "ESC" button then pause game
 		if (Input.GetKeyDown (KeyCode.Escape)) 
 		{
 			//*game un-paused
@@ -92,13 +102,14 @@ public class GameManager_ : MonoBehaviour
 				gameState = GameState.MENU;
 			}
 		}
-			
-		if (enemyList.Count < 0)
+
+		//if enemy count in list is less than 0 (all enemies died) then do win conditions
+		if (enemyList.Count == 0)
 		{
 			gameState = GameState.MENU;
 			Time.timeScale = 0;
 			winPanel.SetActive (true);
+			//couldnt figure out how to play win audio only once (since this is in update)
 		}
-
 	}
 }

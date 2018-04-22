@@ -10,12 +10,14 @@ public class Barrel : MonoBehaviour
 	{
 		playaIsDead = false;
 	}
-	
+
+	//rotate barrel
 	void Update () 
 	{
 		gameObject.transform.Rotate (0, -5, 0);
 	}
 
+	//if barrel touches enemy barrel then player dies
 	void OnCollisionEnter (Collision colliding)
 	{
 		if (colliding.gameObject.tag == "Enemy") 

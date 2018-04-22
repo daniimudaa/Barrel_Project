@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class DeathTrig : MonoBehaviour 
 {
-	//ult attack death for enemies in the path
-
+	//ult attack condition - death for enemies inside the ult trigger zone
 	void OnTriggerEnter (Collider other)
 	{
 		other.transform.root.gameObject.GetComponent<EnemyManager> ().Die();

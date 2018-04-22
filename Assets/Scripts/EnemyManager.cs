@@ -14,6 +14,9 @@ public class EnemyManager : MonoBehaviour
 	public GameObject playerPos;
 	public Animator animator;
 
+	public AudioClip deathClip;
+	public AudioSource audioSource;
+
 	public bool dead;
 
 	public GameManager_ gameScript;
@@ -66,10 +69,12 @@ public class EnemyManager : MonoBehaviour
 	}
 
 
-	//* my addition
+	//* my addition - enemy death conditons
 	public void Die ()
 	{
 		print ("YOU KILLED HIM!");
+
+		audioSource.PlayOneShot (deathClip);
 		dead = true;
 		this.agent.speed = 0;
 		this.animator.SetTrigger ("DeathTrig"); 
