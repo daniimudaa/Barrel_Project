@@ -7575,6 +7575,7 @@ MonoBehaviour:
   mouseActivate: 0
   gameState: 0
   dead: {fileID: 8300000, guid: b425b6df6c9349043a2a12ca2e202714, type: 3}
+  win: {fileID: 8300000, guid: f51748a0aba00a94fa19bb66f3f404d1, type: 3}
   audioSource: {fileID: 1773871397}
 --- !u!4 &1216717600
 Transform:
